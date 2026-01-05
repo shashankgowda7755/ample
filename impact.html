@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Impact of Donations - Watch Donation Drive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;family=Satisfy&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#A06B5D", // Copper/Brown accent
+              secondary: "#0F172A", // Dark Navy/Black for "FOR YOUR"
+              accent: "#F5F0EB", // Light beige blob color
+              "background-light": "#FAF9F6", // Main off-white background
+              "background-dark": "#1a1614",
+              "card-light": "#FFFFFF",
+              "card-dark": "#2a221f",
+              "btn-brown": "#A06B5D", // The specific brown for buttons
+              "text-dark": "#0F172A", // Deep navy/black for headings
+              "text-body": "#4B5563", // Gray for body text
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+              script: ["Satisfy", "cursive"],
+              britty: ["Great Vibes", "cursive"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              'xl': '1rem',
+              '2xl': '1.5rem',
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        .text-shadow-soft {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .signature-rotate {
+            transform: rotate(-5deg);
+        }.blob-bg {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.8;
+        }
+        .blob-1 {
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background-color: #F3EBE5;
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+        }
+        .blob-2 {
+            bottom: 10%;
+            left: -10%;
+            width: 700px;
+            height: 500px;
+            background-color: #F5F0EB;
+            border-radius: 36% 64% 33% 67% / 48% 34% 66% 52%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-body dark:text-gray-200 font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col relative overflow-x-hidden">
+<div class="blob-bg blob-1"></div>
+<div class="blob-bg blob-2"></div>
+<nav class="sticky top-0 z-50 bg-transparent backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex items-center space-x-3">
+<span class="material-icons-outlined text-primary text-3xl" style="color: #A06B5D;">watch</span>
+<span class="font-display font-bold text-2xl tracking-tight text-text-dark dark:text-white">TimeForChange</span>
+</div>
+<div class="hidden md:flex space-x-10 items-center">
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-base" href="#">Home</a>
+<a class="text-primary font-medium text-base" href="#" style="color: #A06B5D;">Our Impact</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-base" href="#">Donate</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-base" href="#">Contact</a>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative pt-12 pb-12 lg:pt-24 lg:pb-16 text-center">
+<div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-2">
+<h2 class="font-britty text-5xl sm:text-6xl text-primary signature-rotate inline-block" style="color: #A06B5D;">Thank You!</h2>
+</div>
+<h1 class="font-poppins font-bold text-6xl sm:text-7xl lg:text-9xl tracking-tight leading-none mb-8 uppercase">
+<span class="text-text-dark dark:text-white" style="color: #0F172A;">For Your</span> <span class="text-primary italic" style="color: #A06B5D;">Watch</span>
+</h1>
+<div class="mb-10">
+<button class="bg-btn-brown text-white px-8 py-3.5 rounded-full text-lg font-medium shadow-md hover:bg-opacity-90 hover:shadow-lg transition-all transform hover:-translate-y-0.5" style="background-color: #A06B5D;">
+                    Download My Certificate
+                </button>
+</div>
+<p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+        Your generosity does more than just tell time. It shapes futures.<br class="hidden sm:block"/>
+        Discover how your refurbished watches are helping students stay<br class="hidden sm:block"/>
+        punctual and confident on their path to success.
+    </p>
+</div>
+</header>
+<main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8">
+<section class="text-center py-8">
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-text-dark dark:text-white mb-6" style="color: #0F172A;">Have an old watch gathering dust?</h2>
+<p class="text-gray-600 dark:text-gray-300 mb-10 max-w-xl mx-auto text-base leading-relaxed">Your unused timepiece could be the daily motivation a student needs. Join hundreds of others in making a tangible difference.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-btn-brown text-white px-8 py-3.5 rounded-full text-lg font-medium shadow-md hover:shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-0.5" style="background-color: #A06B5D;">
+                    Donate a Watch
+                </button>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 mt-auto pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center space-x-2 mb-6">
+<span class="material-icons-outlined text-primary text-2xl" style="color: #A06B5D;">watch</span>
+<span class="font-display font-bold text-xl text-text-dark dark:text-white">TimeForChange</span>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400 leading-loose">
+                        Project curated by <strong class="text-text-dark dark:text-gray-200">COMMUNITREE</strong><br/>
+                        Watches refurbished by <strong class="text-text-dark dark:text-gray-200">ZIMSON</strong>
+</p>
+</div>
+<div>
+<h4 class="font-bold text-text-dark dark:text-white mb-6 uppercase text-xs tracking-widest">Navigation</h4>
+<ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Impact</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Donate</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-dark dark:text-white mb-6 uppercase text-xs tracking-widest">Social</h4>
+<ul class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Twitter</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">LinkedIn</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-text-dark dark:text-white mb-6 uppercase text-xs tracking-widest">Contact</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 mb-3">hello@timeforchange.org</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">+91 98765 43210</p>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 dark:text-gray-500">
+<p>© 2023 TimeForChange Initiative. All rights reserved.</p>
+<p class="mt-2 md:mt-0">Design inspired by Pledge 2026</p>
+</div>
+</div>
+</footer>
+</body></html>
