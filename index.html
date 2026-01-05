@@ -551,31 +551,25 @@
                     <div id="certificate-wrapper"
                         class="relative w-full max-w-sm mx-auto mb-10 rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white transform transition-transform hover:scale-[1.01]">
                         <div id="certificate-visual"
-                            class="relative w-full aspect-[3/4] bg-white overflow-hidden text-gray-900">
+                            class="relative w-full aspect-[3/4.2] bg-white overflow-hidden text-gray-900">
                             <img src="poster_bg.png" class="absolute inset-0 w-full h-full object-cover"
                                 alt="Certificate Background">
                             <div class="absolute inset-0 z-10 w-full h-full">
+                                <!-- Photo Restored to previous position -->
                                 <div
-                                    class="absolute top-[6.3%] left-[8.3%] w-[45.0%] aspect-square rounded-full overflow-hidden">
+                                    class="absolute top-[6.3%] left-[8.3%] w-[45.0%] aspect-square rounded-full overflow-hidden bg-black/10">
                                     <img id="cert-user-photo" src="" class="w-full h-full object-cover"
                                         alt="Donor Photo">
                                 </div>
+                                <!-- Name Restored to previous position with smaller font -->
                                 <div class="absolute top-[66.5%] left-[8%] w-[80%] text-left flex items-center h-[5%]">
                                     <h2
-                                        class="text-xl font-sans font-black text-[#292524] uppercase tracking-wide leading-none select-none">
-                                        <span class="font-normal opacity-70">DEAR </span>
+                                        class="text-base font-sans font-bold text-[#000] tracking-wide leading-none select-none">
                                         <span id="cert-user-name">Jane Doe</span>
                                     </h2>
                                 </div>
                                 <div id="cert-id" class="hidden"></div>
                                 <div id="cert-date" class="hidden"></div>
-                            </div>
-                            <div id="draft-overlay"
-                                class="absolute inset-0 flex items-center justify-center pointer-events-none z-50 bg-slate-900/10 backdrop-blur-[1px]">
-                                <div
-                                    class="bg-white/80 border border-white/50 text-slate-900 text-xl font-black uppercase tracking-[0.5em] px-8 py-3 -rotate-12 backdrop-blur-md rounded shadow-xl">
-                                    Preview
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -979,7 +973,6 @@
             runAfterPaint(() => {
                 submitToGoogleSheet();
                 hideLoading();
-                document.getElementById('draft-overlay').style.display = 'none';
                 const certNode = document.querySelector('#certificate-visual').parentNode;
                 document.getElementById('final-cert-container').appendChild(certNode);
                 goToStep('success');
