@@ -251,18 +251,19 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 flex justify-between items-end">
                     <h2 class="font-display text-4xl text-slate-900 dark:text-white">Explore Initiatives</h2>
                     <div class="flex gap-2">
-                        <button
+                        <button onclick="scrollInitiatives('left')"
                             class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300">
                             <span class="material-icons-outlined text-sm">arrow_back_ios_new</span>
                         </button>
-                        <button
+                        <button onclick="scrollInitiatives('right')"
                             class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-sky-600 transition-colors shadow-lg shadow-sky-500/20">
                             <span class="material-icons-outlined text-sm">arrow_forward_ios</span>
                         </button>
                     </div>
                 </div>
                 <!-- ... Images ... -->
-                <div class="pl-4 sm:pl-6 lg:pl-8 overflow-x-auto no-scrollbar pb-8">
+                <div id="initiatives-scroll-container"
+                    class="pl-4 sm:pl-6 lg:pl-8 overflow-x-auto no-scrollbar pb-8 scroll-smooth">
                     <div class="flex gap-6 w-max pr-8">
                         <div onclick="window.location.href='initiative.html'"
                             class="relative w-[300px] md:w-[600px] h-[450px] md:h-[500px] rounded-[32px] overflow-hidden group cursor-pointer shadow-xl transition-all hover:scale-[1.01]">
@@ -279,7 +280,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Want to be a part of it? Just call us or fill this Google form to reserve your slot.
                                 </p>
-                                <button
+                                <button onclick="window.location.href='initiative.html'; event.stopPropagation();"
                                     class="w-fit bg-primary hover:bg-sky-500 text-slate-900 font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2 group-hover:bg-white group-hover:text-slate-900">
                                     Register Now
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -301,7 +302,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Protect marine life by keeping their natural habitats clean and plastic-free.
                                 </p>
-                                <button
+                                <button onclick="window.location.href='initiative.html'; event.stopPropagation();"
                                     class="w-fit border-2 border-white/40 hover:bg-white hover:border-white hover:text-slate-900 text-white font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2">
                                     Join Now
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -323,7 +324,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Join forces with our community to make a massive impact on our coastal environment.
                                 </p>
-                                <button
+                                <button onclick="window.location.href='initiative.html'; event.stopPropagation();"
                                     class="w-fit border-2 border-white/40 hover:bg-white hover:border-white hover:text-slate-900 text-white font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2">
                                     Contact Us
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -1277,5 +1278,56 @@
         }
 
         initCountries();
+
+        // --- INITIATIVES AUTO SCROLL ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('initiatives-scroll-container');
+            if (!container) return;
+
+            // Get the inner wrapper (the one with flex)
+            const wrapper = container.firstElementChild;
+            // Clone children for infinite effect
+            const originalContent = wrapper.innerHTML;
+            wrapper.innerHTML += originalContent + originalContent; // Triple it for safety
+
+            let scrollSpeed = 1; // Pixels per frame
+            let isHovering = false;
+            let autoScrollAllowed = true;
+
+            // Pause on hover
+            container.addEventListener('mouseenter', () => isHovering = true);
+            container.addEventListener('mouseleave', () => {
+                isHovering = false;
+                autoScrollAllowed = true;
+            });
+
+            // Smooth Auto Scroll Animation
+            function autoScroll() {
+                if (!isHovering && autoScrollAllowed) {
+                    if (container.scrollLeft >= (container.scrollWidth / 3)) {
+                        container.scrollLeft = 0; // Reset seamlessly
+                    } else {
+                        container.scrollLeft += scrollSpeed;
+                    }
+                }
+                requestAnimationFrame(autoScroll);
+            }
+            // Start the loop
+            requestAnimationFrame(autoScroll);
+
+            // Manual Scroll Logic
+            window.scrollInitiatives = function (direction) {
+                // Pause auto scroll temporarily on interaction
+                autoScrollAllowed = false;
+                setTimeout(() => autoScrollAllowed = true, 3000); // Resume after 3s
+
+                const scrollAmount = 400;
+                if (direction === 'left') {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            };
+        });
     </script>
 </body>
