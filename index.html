@@ -163,7 +163,7 @@
                         <button onclick="goToStep('form')"
                             class="inline-flex justify-center items-center bg-primary hover:bg-sky-600 text-white px-8 py-3.5 rounded font-bold transition-all shadow-lg shadow-sky-500/30">
                             <span class="material-icons-outlined text-sm mr-2">download</span>
-                            Generate & Download Your Certificate
+                            Download Your Certificate
                         </button>
                     </div>
                 </div>
@@ -1046,11 +1046,11 @@
             }, 300);
         }
 
-        // Rotate every 8 seconds (User requested 80s, using 8s for perceptible cycle)
+        // Rotate every 0.8 seconds as requested
         setInterval(() => {
             currentMetricIndex = (currentMetricIndex + 1) % metricsData.length;
             renderMetrics();
-        }, 8000);
+        }, 800);
 
         // Initial Render
         document.addEventListener('DOMContentLoaded', () => {
