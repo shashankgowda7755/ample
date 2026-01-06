@@ -125,8 +125,6 @@
                 <!-- Nav removed as per user request -->
                 <!-- Right side header content: Communitree Logo -->
                 <div class="hidden md:flex items-center">
-                    <span
-                        class="text-slate-500 dark:text-slate-400 font-semibold text-xs mr-3 uppercase tracking-wider">Partner</span>
                     <img src="communitree_logo.png" alt="Communitree"
                         class="h-8 w-auto opacity-90 hover:opacity-100 transition-opacity">
                 </div>
@@ -1054,11 +1052,11 @@
             }, 300);
         }
 
-        // Rotate every 0.8 seconds as requested
+        // Rotate every 1.2 seconds as requested
         setInterval(() => {
             currentMetricIndex = (currentMetricIndex + 1) % metricsData.length;
             renderMetrics();
-        }, 800);
+        }, 1200);
 
         // Initial Render
         document.addEventListener('DOMContentLoaded', () => {
