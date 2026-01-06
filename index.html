@@ -1095,16 +1095,46 @@
         }
         function runAfterPaint(cb) { setTimeout(cb, 16); }
 
+
         function downloadPDF() {
             showLoading("Downloading...");
             runAfterPaint(() => {
-                const certElement = document.getElementById('certificate-visual');
-                html2canvas(certElement, { scale: 3, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+                const originalElement = document.getElementById('certificate-visual');
+                // Clone the element to ensure we capture a clean, unscaled version
+                const clone = originalElement.cloneNode(true);
+
+                // Set up the clone to be fixed size and off-screen but visible to the renderer
+                clone.style.position = 'fixed';
+                clone.style.top = '-10000px';
+                clone.style.left = '-10000px';
+                clone.style.transform = 'none'; // Ensure no scaling on the clone
+                clone.style.width = '800px'; // Enforce the standard width
+                // Calculate height based on aspect ratio 1448/2048
+                clone.style.height = `${(800 * 2048) / 1448}px`;
+                clone.style.zIndex = '-1';
+
+                document.body.appendChild(clone);
+
+                html2canvas(clone, {
+                    scale: 2, // High enough quality 
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    windowWidth: 800,
+                    width: 800
+                }).then(canvas => {
                     const link = document.createElement('a');
-                    link.download = `Certificate-${userData.fullName.replace(/\s+/g, '-')}.png`;
+                    link.download = `Certificate-${(userData.fullName || 'User').replace(/\s+/g, '-')}.png`;
                     link.href = canvas.toDataURL('image/png');
                     link.click();
+
+                    // Cleanup
+                    document.body.removeChild(clone);
                     hideLoading();
+                }).catch(err => {
+                    console.error("Capture failed:", err);
+                    if (clone.parentNode) document.body.removeChild(clone);
+                    hideLoading();
+                    showToast("Failed to generate image", "error");
                 });
             });
         }
@@ -1112,17 +1142,49 @@
         function shareImpact() {
             showLoading("Sharing...");
             runAfterPaint(() => {
-                const certElement = document.getElementById('certificate-visual');
-                html2canvas(certElement, { scale: 3, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+                const originalElement = document.getElementById('certificate-visual');
+                const clone = originalElement.cloneNode(true);
+
+                clone.style.position = 'fixed';
+                clone.style.top = '-10000px';
+                clone.style.left = '-10000px';
+                clone.style.transform = 'none';
+                clone.style.width = '800px';
+                clone.style.height = `${(800 * 2048) / 1448}px`;
+                clone.style.zIndex = '-1';
+
+                document.body.appendChild(clone);
+
+                html2canvas(clone, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    windowWidth: 800,
+                    width: 800
+                }).then(canvas => {
                     canvas.toBlob(blob => {
+                        // Cleanup immediately after blob creation
+                        if (clone.parentNode) document.body.removeChild(clone);
+
                         if (blob && navigator.share) {
                             const file = new File([blob], 'cert.png', { type: 'image/png' });
-                            navigator.share({ files: [file], title: 'PureShores Certificate' }).then(() => hideLoading()).catch(() => hideLoading());
+                            navigator.share({ files: [file], title: 'PureShores Certificate' })
+                                .then(() => hideLoading())
+                                .catch(() => hideLoading());
                         } else {
                             hideLoading();
-                            downloadPDF();
+                            // If share not supported, fallback to simple download logic (we can't recursively call safeDownload easily without duping code, so trigger a click on the url)
+                            const link = document.createElement('a');
+                            link.download = `Certificate-${(userData.fullName || 'User').replace(/\s+/g, '-')}.png`;
+                            link.href = canvas.toDataURL('image/png');
+                            link.click();
                         }
                     }, 'image/png');
+                }).catch(err => {
+                    console.error("Capture failed:", err);
+                    if (clone.parentNode) document.body.removeChild(clone);
+                    hideLoading();
+                    showToast("Failed to generate image", "error");
                 });
             });
         }
