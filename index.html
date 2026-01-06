@@ -436,19 +436,8 @@
                                             <input id="marketingCheckbox" type="checkbox"
                                                 class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer" />
                                         </div>
-                                        <span class="text-sm text-slate-600">I agree to receive updates about the
-                                            campaign.</span>
-                                    </label>
-                                    <label class="flex items-start gap-4 cursor-pointer group">
-                                        <div class="relative flex items-center h-5">
-                                            <input id="consentCheckbox" required type="checkbox"
-                                                class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary cursor-pointer" />
-                                        </div>
-                                        <div class="text-sm text-slate-600">
-                                            <span>I agree to the processing of my data. </span>
-                                            <a href="privacy-policy.html" target="_blank"
-                                                class="text-primary hover:text-sky-600 underline">Privacy Policy</a>
-                                        </div>
+                                        <span class="text-sm text-slate-600">I would like to receive updates about
+                                            similar campaigns.</span>
                                     </label>
                                 </div>
                                 <!-- Hidden Honeypot -->
@@ -627,12 +616,7 @@
             <div
                 class="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-xs text-slate-400 dark:text-slate-500">© 2024 Beach Cleanup. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a class="text-xs text-slate-500 dark:text-slate-400 hover:text-primary transition-colors"
-                        href="#">Privacy Policy</a>
-                    <a class="text-xs text-slate-500 dark:text-slate-400 hover:text-primary transition-colors"
-                        href="#">Terms of Service</a>
-                </div>
+
             </div>
         </div>
     </footer>
@@ -918,7 +902,6 @@
 
             if (!fullName || !phone) return showToast("Please fill in all required fields.", "error");
             if (!userData.photo) return showToast("Please upload or capture a photo.", "error");
-            if (!document.getElementById('consentCheckbox').checked) return showToast("You must agree to the privacy policy.", "error");
 
             showLoading("Generating preview...");
             runAfterPaint(() => {
