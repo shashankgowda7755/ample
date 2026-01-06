@@ -1279,20 +1279,19 @@
 
         initCountries();
 
-        // --- INITIATIVES AUTO SCROLL ---
+        // --- INITIATIVES CAROUSEL ---
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('initiatives-scroll-container');
             if (!container) return;
 
-            // Get the inner wrapper (the one with flex)
             const wrapper = container.firstElementChild;
-            // Clone children for infinite effect
             const originalContent = wrapper.innerHTML;
-            wrapper.innerHTML += originalContent + originalContent; // Triple it for safety
+            // Clone 4 times to ensure smooth infinite scrolling for a long time
+            wrapper.innerHTML = originalContent + originalContent + originalContent + originalContent;
 
-            let scrollSpeed = 1; // Pixels per frame
             let isHovering = false;
             let autoScrollAllowed = true;
+            const intervalTime = 2000; // 2 seconds per card change
 
             // Pause on hover
             container.addEventListener('mouseenter', () => isHovering = true);
@@ -1301,31 +1300,44 @@
                 autoScrollAllowed = true;
             });
 
-            // Smooth Auto Scroll Animation
-            function autoScroll() {
-                if (!isHovering && autoScrollAllowed) {
-                    if (container.scrollLeft >= (container.scrollWidth / 3)) {
-                        container.scrollLeft = 0; // Reset seamlessly
-                    } else {
-                        container.scrollLeft += scrollSpeed;
-                    }
+            function scrollToNextCard() {
+                if (isHovering || !autoScrollAllowed) return;
+
+                // Calculate width dynamically based on the first card found
+                const card = wrapper.children[0];
+                const style = window.getComputedStyle(wrapper);
+                const gap = parseFloat(style.gap) || 24; // Default to 24px (gap-6)
+                const itemWidth = card.offsetWidth + gap;
+
+                const maxScroll = container.scrollWidth / 2; // Reset point safely in the middle
+
+                // Scroll smoothly to next
+                container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+
+                // Check for reset
+                // We use a timeout to check position after scroll *might* have finished or periodically
+                if (container.scrollLeft >= maxScroll) {
+                    // Snap back to 0 instantly without smooth behavior to loop
+                    container.style.scrollBehavior = 'auto';
+                    container.scrollLeft = 0;
+                    container.style.scrollBehavior = 'smooth';
                 }
-                requestAnimationFrame(autoScroll);
             }
-            // Start the loop
-            requestAnimationFrame(autoScroll);
+
+            setInterval(scrollToNextCard, intervalTime);
 
             // Manual Scroll Logic
             window.scrollInitiatives = function (direction) {
-                // Pause auto scroll temporarily on interaction
                 autoScrollAllowed = false;
-                setTimeout(() => autoScrollAllowed = true, 3000); // Resume after 3s
+                setTimeout(() => autoScrollAllowed = true, 4000);
 
-                const scrollAmount = 400;
+                const card = wrapper.children[0];
+                const itemWidth = card.offsetWidth + 24;
+
                 if (direction === 'left') {
-                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
                 } else {
-                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    container.scrollBy({ left: itemWidth, behavior: 'smooth' });
                 }
             };
         });
