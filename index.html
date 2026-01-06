@@ -118,8 +118,8 @@
     <header
         class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center items-center h-20">
-                <!-- Centered Ample Logo -->
+            <div class="flex justify-end items-center h-20">
+                <!-- Right Side Ample Logo -->
                 <div class="flex items-center cursor-pointer" onclick="goToStep('landing')">
                     <img src="logo.svg" alt="Company Logo" class="h-10 w-auto" />
                 </div>
@@ -141,19 +141,19 @@
                 </div>
                 <!-- Communitree Logo removed from here -->
                 <!-- Dynamic Content Container -->
-                <div
-                    class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 text-center flex flex-col items-center">
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12">
                     <h1 class="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
                         Thank You for Taking Responsibility for Our Beaches
                     </h1>
-                    <div class="mb-10 max-w-3xl mx-auto">
+                    <div class="flex items-start mb-10 max-w-2xl">
+                        <div class="w-1 h-16 bg-secondary mr-6 mt-1 flex-shrink-0"></div>
                         <p class="text-lg md:text-xl text-slate-100 font-light leading-relaxed">
                             Every small action matters.
                             By showing up for the beach cleanup, you helped protect marine life, preserve coastlines,
                             and inspire others to care.
                         </p>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex flex-col sm:flex-row gap-4">
                         <!-- Triggers form step -->
                         <button onclick="goToStep('form')"
                             class="inline-flex justify-center items-center bg-primary hover:bg-sky-600 text-white px-8 py-3.5 rounded font-bold transition-all shadow-lg shadow-sky-500/30">
