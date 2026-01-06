@@ -1131,43 +1131,37 @@
         }
 
         function updateCertificateScale() {
-            const wrapper = document.getElementById('certificate-wrapper');
             const container = document.getElementById('certificate-scale-container');
-            if (!wrapper || !container) return;
+            if (!container) return;
 
-            const containerWidth = wrapper.offsetWidth;
+            // Get the current active parent (either wrapper in Preview or final-container in Success)
+            const parent = container.parentElement;
+            if (!parent) return;
+
+            const containerWidth = parent.offsetWidth;
+            // Only proceed if the parent has a width (is visible)
+            if (containerWidth === 0) return;
+
             const targetWidth = 800; // The fixed width of our visual
-            // Calculate scale to fit. 
-            // We Subtract a small buffer (e.g. 2px) to prevent sub-pixel rounding borders
-            const scale = Math.min(1, (containerWidth) / targetWidth);
+            const scale = Math.min(1, containerWidth / targetWidth);
 
             container.style.transform = `scale(${scale})`;
 
-            // We effectively need to reserve height for this scaled element.
-            // visual aspect ratio is 1448/2048.
-            // width is 800. height is approx 1131.
+            // Reserve height for the scaled element
             const unscaledHeight = (800 * 2048) / 1448;
-            wrapper.style.height = `${unscaledHeight * scale}px`;
+            parent.style.height = `${unscaledHeight * scale}px`;
         }
 
         window.addEventListener('resize', updateCertificateScale);
 
         // Hook into step transitions to trigger scale update
         // We override the global goToStep to inject this logic
-        const originalGoToStepForScale = window.goToStep;
-        // Note: goToStep is defined earlier in the file. We need to make sure we don't break it.
-        // A safer way is to just add a mutation observer or call it in the existing goToStep if we could edit it.
-        // Since we are appending, let's just piggyback on the click handlers or add an interval check for step-preview visibility?
-        // Actually, overriding is fine if we are careful.
-
-        // Let's redefine goToStep wrapper if it exists (it was defined in lines 1-800 usually)
-        // Check lines 167: function goToStep(stepId) { ... }
-        // We will just patch it:
         const oldGoToStep = typeof goToStep !== 'undefined' ? goToStep : null;
         if (oldGoToStep) {
             goToStep = function (stepId) {
                 oldGoToStep(stepId);
-                if (stepId === 'preview') {
+                // Trigger scale update for both preview and success steps
+                if (stepId === 'preview' || stepId === 'success') {
                     // Wait for layout
                     setTimeout(updateCertificateScale, 50);
                     setTimeout(updateCertificateScale, 300); // Safety
