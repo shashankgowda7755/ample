@@ -493,27 +493,31 @@
 
                     <!-- Canvas -->
                     <div id="certificate-wrapper"
-                        class="relative w-full max-w-sm mx-auto mb-10 rounded-xl overflow-hidden shadow-2xl border border-slate-200 bg-white transform transition-transform hover:scale-[1.01]">
-                        <div id="certificate-visual"
-                            class="relative w-full aspect-[1448/2048] bg-white overflow-hidden text-gray-900">
-                            <img src="poster_bg_final.png" class="absolute inset-0 w-full h-full object-cover"
-                                alt="Certificate Background">
-                            <div class="absolute inset-0 z-10 w-full h-full">
-                                <!-- Photo Adjusted to match new design -->
-                                <div
-                                    class="absolute top-[26%] left-[7.5%] w-[36.5%] aspect-square rounded-full overflow-hidden">
-                                    <img id="cert-user-photo" src="" class="w-full h-full object-cover"
-                                        alt="Donor Photo">
+                        class="relative w-full max-w-sm mx-auto mb-10 rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
+                        <!-- Scale Container -->
+                        <div id="certificate-scale-container" class="origin-top w-full flex justify-center">
+                            <div id="certificate-visual"
+                                class="relative w-[800px] aspect-[1448/2048] bg-white overflow-hidden text-gray-900 shadow-2xl flex-shrink-0">
+                                <img src="poster_bg_final.png" class="absolute inset-0 w-full h-full object-cover"
+                                    alt="Certificate Background">
+                                <div class="absolute inset-0 z-10 w-full h-full">
+                                    <!-- Photo Adjusted to match new design -->
+                                    <div
+                                        class="absolute top-[26%] left-[7.5%] w-[36.5%] aspect-square rounded-full overflow-hidden">
+                                        <img id="cert-user-photo" src="" class="w-full h-full object-cover"
+                                            alt="Donor Photo">
+                                    </div>
+                                    <!-- Name Adjusted to be below photo -->
+                                    <div
+                                        class="absolute top-[51%] left-[8.5%] w-[80%] text-left flex items-center h-auto">
+                                        <h2
+                                            class="text-4xl font-sans font-bold text-[#000] tracking-wide leading-none select-none">
+                                            <span id="cert-user-name">Jane Doe</span>
+                                        </h2>
+                                    </div>
+                                    <div id="cert-id" class="hidden"></div>
+                                    <div id="cert-date" class="hidden"></div>
                                 </div>
-                                <!-- Name Adjusted to be below photo -->
-                                <div class="absolute top-[51%] left-[8.5%] w-[80%] text-left flex items-center h-auto">
-                                    <h2
-                                        class="text-base font-sans font-bold text-[#000] tracking-wide leading-none select-none">
-                                        <span id="cert-user-name">Jane Doe</span>
-                                    </h2>
-                                </div>
-                                <div id="cert-id" class="hidden"></div>
-                                <div id="cert-date" class="hidden"></div>
                             </div>
                         </div>
                     </div>
@@ -1132,6 +1136,51 @@
 
         function resetApp() {
             window.location.reload();
+        }
+
+        function updateCertificateScale() {
+            const wrapper = document.getElementById('certificate-wrapper');
+            const container = document.getElementById('certificate-scale-container');
+            if (!wrapper || !container) return;
+
+            const containerWidth = wrapper.offsetWidth;
+            const targetWidth = 800; // The fixed width of our visual
+            // Calculate scale to fit. 
+            // We Subtract a small buffer (e.g. 2px) to prevent sub-pixel rounding borders
+            const scale = Math.min(1, (containerWidth) / targetWidth);
+
+            container.style.transform = `scale(${scale})`;
+
+            // We effectively need to reserve height for this scaled element.
+            // visual aspect ratio is 1448/2048.
+            // width is 800. height is approx 1131.
+            const unscaledHeight = (800 * 2048) / 1448;
+            wrapper.style.height = `${unscaledHeight * scale}px`;
+        }
+
+        window.addEventListener('resize', updateCertificateScale);
+
+        // Hook into step transitions to trigger scale update
+        // We override the global goToStep to inject this logic
+        const originalGoToStepForScale = window.goToStep;
+        // Note: goToStep is defined earlier in the file. We need to make sure we don't break it.
+        // A safer way is to just add a mutation observer or call it in the existing goToStep if we could edit it.
+        // Since we are appending, let's just piggyback on the click handlers or add an interval check for step-preview visibility?
+        // Actually, overriding is fine if we are careful.
+
+        // Let's redefine goToStep wrapper if it exists (it was defined in lines 1-800 usually)
+        // Check lines 167: function goToStep(stepId) { ... }
+        // We will just patch it:
+        const oldGoToStep = typeof goToStep !== 'undefined' ? goToStep : null;
+        if (oldGoToStep) {
+            goToStep = function (stepId) {
+                oldGoToStep(stepId);
+                if (stepId === 'preview') {
+                    // Wait for layout
+                    setTimeout(updateCertificateScale, 50);
+                    setTimeout(updateCertificateScale, 300); // Safety
+                }
+            };
         }
 
         initCountries();
