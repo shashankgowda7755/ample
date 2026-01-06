@@ -71,24 +71,22 @@
     <main class="pb-20">
         <!-- Hero Section -->
         <section class="relative h-[50vh] min-h-[400px]">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxb68n_7NnOpptwRnBpPPHeOUF6bxGKKq-gGfFjpq7QR9H4wBWSMlhiu4gGg9cDhqbiUGebMI6lDMoIhRxVbSV-iHqeZmaA7Ckc9AFc7eiOfeihL92XmlUs4pdUwhiNWLG-T-r1OmVPDzubNLIAqMR-o0xXCgIGMn-i9shgYVGEffWrizRYzIGqm7p03Q4R3VkQ9EDLndqwr480v9_3KwdjVdcV49YjMaTNwM6mJpLCHApPI8J11TxDYBDQFpPcbCHntBYS54-56k"
-                alt="Initiative Hero" class="w-full h-full object-cover">
+            <img id="hero-img" src="" alt="Initiative Hero" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
                 <div class="max-w-7xl mx-auto">
-                    <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-primary text-white text-sm font-bold uppercase tracking-wider mb-4 shadow-lg">Featured
-                        Initiative</span>
-                    <h1 class="font-display text-5xl md:text-7xl text-white leading-tight drop-shadow-lg mb-4">Beach
-                        Cleanup Drive</h1>
+                    <span id="hero-tag"
+                        class="inline-block px-4 py-1.5 rounded-full bg-primary text-white text-sm font-bold uppercase tracking-wider mb-4 shadow-lg"></span>
+                    <h1 id="hero-title"
+                        class="font-display text-5xl md:text-7xl text-white leading-tight drop-shadow-lg mb-4"></h1>
                     <div class="flex items-center gap-6 text-slate-200 text-sm md:text-base font-medium">
                         <div class="flex items-center gap-2">
                             <span class="material-icons-outlined">calendar_today</span>
-                            <span>Every Weekend</span>
+                            <span id="hero-date">Seasonal / Weekly</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="material-icons-outlined">location_on</span>
-                            <span>Valid Locations</span>
+                            <span>Chennai Coastline</span>
                         </div>
                     </div>
                 </div>
@@ -101,62 +99,25 @@
                 <!-- Main Content -->
                 <div
                     class="lg:col-span-2 bg-surface-light dark:bg-surface-dark p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800">
-                    <h2 class="font-display text-3xl text-slate-900 dark:text-white mb-6">About this Initiative</h2>
-                    <div class="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300">
-                        <p class="mb-6">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                        <p class="mb-6">
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                            anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                        </p>
-                        <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Why it matters</h3>
-                        <p class="mb-6">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-                            est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
-                        </p>
-                        <ul class="list-disc pl-6 space-y-2 mb-6">
-                            <li>Protect marine ecosystems from harmful debris</li>
-                            <li>Ensure safe nesting grounds for turtles</li>
-                            <li>Engage local communities in conservation</li>
-                            <li>Create a sustainable future for our coastlines</li>
-                        </ul>
+                    <div id="content-body"
+                        class="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+                        <!-- Dynamic Content Injected Here -->
                     </div>
 
-                    <!-- Gallery Placeholder -->
+                    <!-- Gallery -->
                     <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-12 mb-6">Gallery</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgSq-eITFpaOllgmH7IWi7kZM0KZrZefrbl3FLKmkoqBC8N61ap1d8XQH7VLZPFxitA4g7iZO2q8MfNoNjKdAafAiFIzUW-b1zMQZ1K5v6i3xgvMJpuR9gGlP2xGhVDXVYdTkBf9sZdMP_V2Co-742YaWiIEL0PbQgbECEbNf6gpHuODvGk99GUtaqpA5FhHwEeiq2B5OTpSbgzDR3mDBW41HHsx18VojOX2Q_y0buYQNCl7hgtWez4x9urYdTitwJ0AT1RQ-xFCQ"
-                                alt="Gallery 1"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
-                        <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD__QuVQUXkMHh5URPJebjXMEvTcb4G_iMTjMvmvrx1OzJsjS54cI93Y8vt9C9c6NFPOv8dsPj99shaXZawb63OMeofzdGdOXr_CXHQ90AGsqgspJFlNz3mQxUT1e2nbxLr6HE1B539Mro8YlQh_l2kJT9VgJrde3YNKO2JrB0DAgV4fTch91spXXk0Um074tCWcybDQNjp5AxzdK7gWDWS4sBd-CZSddT1iQDwuWk5hQOZV-l1BL_5nj4efe0Hd1qLkur_fBhgy7o"
-                                alt="Gallery 2"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                        </div>
+                    <div id="gallery-grid" class="grid grid-cols-2 gap-4">
+                        <!-- Dynamic Gallery -->
                     </div>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="lg:col-span-1 space-y-8">
-                    <!-- CTA Card -->
                     <div
                         class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 sticky top-24">
                         <h3 class="font-display text-2xl text-slate-900 dark:text-white mb-2">Join the Movement</h3>
                         <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Follow us on Instagram for the latest
-                            updates and
-                            event details.</p>
-
-
-
+                            updates and event details.</p>
                         <a href="https://www.instagram.com/communitreeindia/" target="_blank"
                             class="block w-full py-4 mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold text-center rounded-xl transition-all shadow-lg shadow-pink-500/20 transform hover:-translate-y-1">
                             Visit Instagram
@@ -167,13 +128,122 @@
         </section>
     </main>
 
-    <!-- Footer (Simplified) -->
+    <!-- Footer -->
     <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-slate-500 dark:text-slate-400">© 2024 Beach Cleanup. All rights reserved.</p>
         </div>
     </footer>
 
+    <script>
+        const contentData = {
+            'turtle': {
+                tag: "Conservation",
+                title: "Turtle Walks",
+                date: "Jan - Mar (Nesting Season)",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAgSq-eITFpaOllgmH7IWi7kZM0KZrZefrbl3FLKmkoqBC8N61ap1d8XQH7VLZPFxitA4g7iZO2q8MfNoNjKdAafAiFIzUW-b1zMQZ1K5v6i3xgvMJpuR9gGlP2xGhVDXVYdTkBf9sZdMP_V2Co-742YaWiIEL0PbQgbECEbNf6gpHuODvGk99GUtaqpA5FhHwEeiq2B5OTpSbgzDR3mDBW41HHsx18VojOX2Q_y0buYQNCl7hgtWez4x9urYdTitwJ0AT1RQ-xFCQ",
+                body: `
+                    <h2 class="font-display text-3xl text-slate-900 dark:text-white mb-6">A Magical Journey Under the Stars</h2>
+                    <p>Imagine walking along a moonlit beach, searching for the ancient tracks of sea turtles returning to nest. This is the experience SAVEaTURTLE offers through our turtle walks program - one of Chennai's most extraordinary wildlife conservation activities.</p>
+                    
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">What Are Turtle Walks?</h3>
+                    <p>Turtle walks are guided nighttime beach expeditions where participants join Forest Department officials and experienced naturalists to witness the nesting behavior of Olive Ridley sea turtles. During Chennai's nesting season (typically February through March), these magnificent creatures return to the shores where they were born to lay their eggs.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">The Experience</h3>
+                    <p>Under the starlit sky, small groups of volunteers become guardians of an ancient ritual. Walking quietly along the coastline, participants learn to identify turtle crawls - the distinctive tracks turtles leave in the sand. When nests are located, Forest Department experts explain proper protection protocols and share fascinating insights about sea turtle biology, behavior, and conservation challenges.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Our Track Record</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li><strong>Participation Growth:</strong> Recent seasons have seen over 1,000 participants with individual walk attendance ranging from 35 to 134 people.</li>
+                        <li><strong>Conservation Impact:</strong> Thousands of volunteers have helped protect hundreds of turtle nests each season. In a particularly successful season, we monitored 383 nests that produced approximately 49,659 hatchlings.</li>
+                    </ul>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Who Participates?</h3>
+                    <p>Our turtle walks attract diverse groups including schools, corporate teams, families, and nature enthusiasts. It provides hands-on environmental education that goes far beyond textbooks and offers meaningful team-building experiences.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Preparing for Your Walk</h3>
+                    <p>Turtle walks typically occur in the pre-dawn hours or after sunset. Participants receive a pre-walk briefing on safety and wildlife etiquette. We recommend comfortable walking clothes and a commitment to conservation.</p>
+                `
+            },
+            'cleanup': {
+                tag: "Restoration",
+                title: "Beach Cleanups",
+                date: "Every Weekend",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxb68n_7NnOpptwRnBpPPHeOUF6bxGKKq-gGfFjpq7QR9H4wBWSMlhiu4gGg9cDhqbiUGebMI6lDMoIhRxVbSV-iHqeZmaA7Ckc9AFc7eiOfeihL92XmlUs4pdUwhiNWLG-T-r1OmVPDzubNLIAqMR-o0xXCgIGMn-i9shgYVGEffWrizRYzIGqm7p03Q4R3VkQ9EDLndqwr480v9_3KwdjVdcV49YjMaTNwM6mJpLCHApPI8J11TxDYBDQFpPcbCHntBYS54-56k",
+                body: `
+                    <h2 class="font-display text-3xl text-slate-900 dark:text-white mb-6">Transforming Chennai's Coastline</h2>
+                    <p>For over 15 years, SAVEaTURTLE has been restoring Chennai's beautiful coastline to its natural glory. What started as a small group of concerned citizens has grown into a powerful movement with nearly 1,000 tons of trash removed from our beaches.</p>
+                    
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">The Impact in Numbers</h3>
+                    <p>SAVEaTURTLE has organized over 750 beach cleanups, mobilized more than 107,000 volunteers, and removed approximately 973 tons of trash from coastal ecosystems. These aren't just statistics - they represent real impact on marine life, beach health, and community awareness.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">International Coastal Cleanup Day</h3>
+                    <p>Every third Saturday of September, SAVEaTURTLE participates in the International Coastal Cleanup, joining millions of ocean advocates worldwide. This is our largest annual cleanup event, bringing together schools, colleges, corporates, and NGOs.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Why Beach Cleanups Matter?</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li><strong>Protecting Marine Life:</strong> The 300+ turtle nests we monitor each season depend on clean beaches. Every piece of plastic removed is one less obstacle for hatchlings.</li>
+                        <li><strong>Data Collection:</strong> Our cleanup data helps identify pollution sources and inform policy decisions.</li>
+                        <li><strong>Community Awareness:</strong> Participants see firsthand the scale of ocean pollution and become ambassadors for change.</li>
+                    </ul>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">What We Provide</h3>
+                    <p>Participants don't need to bring anything except enthusiasm. We provide collection bags, gloves, safety equipment, refreshments, and expert supervision.</p>
+                `
+            },
+            'sand': {
+                tag: "Event",
+                title: "Sand Sculpture Contest",
+                date: "Annual Event",
+                image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD__QuVQUXkMHh5URPJebjXMEvTcb4G_iMTjMvmvrx1OzJsjS54cI93Y8vt9C9c6NFPOv8dsPj99shaXZawb63OMeofzdGdOXr_CXHQ90AGsqgspJFlNz3mQxUT1e2nbxLr6HE1B539Mro8YlQh_l2kJT9VgJrde3YNKO2JrB0DAgV4fTch91spXXk0Um074tCWcybDQNjp5AxzdK7gWDWS4sBd-CZSddT1iQDwuWk5hQOZV-l1BL_5nj4efe0Hd1qLkur_fBhgy7o",
+                body: `
+                    <h2 class="font-display text-3xl text-slate-900 dark:text-white mb-6">Where Creativity Meets Conservation</h2>
+                    <p>Imagine transforming Chennai's vast sandy beach into a gallery of marine-themed masterpieces. That's the magic of SAVEaTURTLE's Sand Sculpture Contest, where art becomes advocacy and creativity drives conservation awareness.</p>
+                    
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Our Growing Tradition</h3>
+                    <p>The Sand Sculpture Contest has become one of Chennai's most anticipated environmental events. From early contests attracting over 1,300 participants, we've grown to see over 3,500 participants in recent events, totaling over 10,000 throughout our history.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Themes That Inspire Action</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-6">
+                        <li><strong>Marine Life Celebration:</strong> Sea turtles, dolphins, whales, and coral reefs.</li>
+                        <li><strong>Plastic Pollution Awareness:</strong> Powerful sculptures depicting environmental challenges.</li>
+                        <li><strong>Conservation Heroes:</strong> Tributes to those protecting marine ecosystems.</li>
+                    </ul>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Categories for Every Artist</h3>
+                    <p>The contest welcomes all skill levels and ages: Junior Artists (Under 12), Youth (13-17), Adults, Family Teams, and Corporate Groups. It is a truly inclusive event where everyone can appreciate and create art.</p>
+
+                    <h3 class="font-display text-2xl text-slate-900 dark:text-white mt-8 mb-4">Why Sand Sculpture?</h3>
+                    <p>While beach cleanups remove trash and turtle walks protect nesting sites, sand sculpture engages hearts and minds through creative expression. The temporary nature of the art reminds us to enjoy the present moment and respect natural cycles.</p>
+                `
+            }
+        };
+
+        function loadContent() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || 'cleanup'; // Default to cleanup if no match
+            const data = contentData[id] || contentData['cleanup'];
+
+            document.getElementById('hero-img').src = data.image;
+            document.getElementById('hero-tag').textContent = data.tag;
+            document.getElementById('hero-title').textContent = data.title;
+            document.getElementById('hero-date').textContent = data.date;
+            document.getElementById('content-body').innerHTML = data.body;
+
+            // Populate Gallery (using same image for demo, duplicated)
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = `
+                <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden">
+                    <img src="${data.image}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="aspect-video bg-slate-200 dark:bg-slate-700 rounded-xl overflow-hidden">
+                    <img src="${data.image}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" style="filter: hue-rotate(45deg);">
+                </div>
+            `;
+        }
+
+        window.onload = loadContent;
+    </script>
 </body>
 
 </html>
