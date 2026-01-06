@@ -395,7 +395,7 @@
                                             class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Full
                                             Name</label>
                                         <input id="fullName" required type="text" placeholder="e.g. Jane Doe"
-                                            class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                                            class="w-full px-4 py-3 md:px-5 md:py-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                                     </div>
 
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -406,7 +406,7 @@
                                                 class="flex rounded-xl border border-slate-200 bg-slate-50 overflow-hidden focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
                                                 <div class="w-[30%] border-r border-slate-200 bg-slate-100 relative">
                                                     <select id="countryCode"
-                                                        class="w-full h-full bg-transparent border-none text-slate-700 text-sm font-medium text-center appearance-none focus:ring-0 cursor-pointer pl-2 pr-6 py-4">
+                                                        class="w-full h-full bg-transparent border-none text-slate-700 text-sm font-medium text-center appearance-none focus:ring-0 cursor-pointer pl-2 pr-6 py-3 md:py-4">
                                                         <option value="+91">+91</option>
                                                     </select>
                                                     <span
@@ -415,7 +415,7 @@
                                                     </span>
                                                 </div>
                                                 <input id="phone" required type="tel" placeholder="98765 43210"
-                                                    class="w-[70%] bg-transparent border-none text-slate-800 placeholder-slate-400 focus:ring-0 px-4 py-4" />
+                                                    class="w-[70%] bg-transparent border-none text-slate-800 placeholder-slate-400 focus:ring-0 px-4 py-3 md:py-4" />
                                             </div>
                                         </div>
 
@@ -423,7 +423,7 @@
                                             <label
                                                 class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email</label>
                                             <input id="email" required type="email" placeholder="name@example.com"
-                                                class="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
+                                                class="w-full px-4 py-3 md:px-5 md:py-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 placeholder-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" />
                                         </div>
                                     </div>
                                 </div>
@@ -460,11 +460,11 @@
                                 <!-- Added Cancel button to return to home -->
                                 <div class="flex gap-4">
                                     <button type="button" onclick="goToStep('landing')"
-                                        class="w-1/3 px-6 py-4 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-colors">
+                                        class="w-1/3 px-4 py-3 md:px-6 md:py-4 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-colors">
                                         BACK
                                     </button>
                                     <button type="submit"
-                                        class="w-2/3 px-6 py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold tracking-wide shadow-lg shadow-sky-500/20 transition-all transform hover:-translate-y-1">
+                                        class="w-2/3 px-4 py-3 md:px-6 md:py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold tracking-wide shadow-lg shadow-sky-500/20 transition-all transform hover:-translate-y-1">
                                         PREVIEW CERTIFICATE
                                     </button>
                                 </div>
@@ -518,11 +518,11 @@
                     <!-- Actions -->
                     <div class="flex gap-4 w-full">
                         <button onclick="goToStep('form')"
-                            class="flex-1 px-8 py-4 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-all">
+                            class="flex-1 px-4 py-3 md:px-8 md:py-4 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-all">
                             EDIT
                         </button>
                         <button onclick="finalizeCertificate()"
-                            class="flex-1 px-8 py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold tracking-wide shadow-lg shadow-sky-500/20 transition-all transform hover:-translate-y-1">
+                            class="flex-1 px-4 py-3 md:px-8 md:py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold tracking-wide shadow-lg shadow-sky-500/20 transition-all transform hover:-translate-y-1">
                             GET CERTIFICATE
                         </button>
                     </div>
@@ -550,12 +550,12 @@
 
                     <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
                         <button onclick="downloadPDF()"
-                            class="flex-1 px-8 py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold shadow-lg shadow-sky-500/20 transition-all flex items-center justify-center gap-2">
+                            class="flex-1 px-4 py-3 md:px-8 md:py-4 rounded-xl bg-primary hover:bg-sky-600 text-white font-bold shadow-lg shadow-sky-500/20 transition-all flex items-center justify-center gap-2">
                             <span class="material-icons-outlined">download</span>
                             Download
                         </button>
                         <button onclick="shareImpact()"
-                            class="flex-1 px-8 py-4 rounded-xl border-2 border-slate-200 hover:border-primary hover:text-primary text-slate-600 font-bold transition-all flex items-center justify-center gap-2">
+                            class="flex-1 px-4 py-3 md:px-8 md:py-4 rounded-xl border-2 border-slate-200 hover:border-primary hover:text-primary text-slate-600 font-bold transition-all flex items-center justify-center gap-2">
                             <span class="material-icons-outlined">share</span>
                             Share
                         </button>
