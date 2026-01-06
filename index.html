@@ -279,7 +279,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Want to be a part of it? Just call us or fill this Google form to reserve your slot.
                                 </p>
-                                <button
+                                <button onclick="openInitiativeModal('cleanup')"
                                     class="w-fit bg-primary hover:bg-sky-500 text-slate-900 font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2 group-hover:bg-white group-hover:text-slate-900">
                                     Register Now
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -301,7 +301,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Protect marine life by keeping their natural habitats clean and plastic-free.
                                 </p>
-                                <button
+                                <button onclick="openInitiativeModal('turtle')"
                                     class="w-fit border-2 border-white/40 hover:bg-white hover:border-white hover:text-slate-900 text-white font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2">
                                     Join Now
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -323,7 +323,7 @@
                                 <p class="text-slate-200 text-lg md:text-xl font-medium mb-8 max-w-sm leading-relaxed">
                                     Join forces with our community to make a massive impact on our coastal environment.
                                 </p>
-                                <button
+                                <button onclick="openInitiativeModal('community')"
                                     class="w-fit border-2 border-white/40 hover:bg-white hover:border-white hover:text-slate-900 text-white font-bold px-8 py-3.5 rounded-full transition-all transform hover:-translate-y-1 flex items-center gap-2">
                                     Contact Us
                                     <span class="material-icons-outlined text-xl">arrow_forward</span>
@@ -1209,8 +1209,76 @@
             };
         }
 
-        initCountries();
+        <script>
+        // Initiative Data
+            const initiatives = {
+                'cleanup': {
+                title: "Beach Cleanup",
+            tag: "Event",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxb68n_7NnOpptwRnBpPPHeOUF6bxGKKq-gGfFjpq7QR9H4wBWSMlhiu4gGg9cDhqbiUGebMI6lDMoIhRxVbSV-iHqeZmaA7Ckc9AFc7eiOfeihL92XmlUs4pdUwhiNWLG-T-r1OmVPDzubNLIAqMR-o0xXCgIGMn-i9shgYVGEffWrizRYzIGqm7p03Q4R3VkQ9EDLndqwr480v9_3KwdjVdcV49YjMaTNwM6mJpLCHApPI8J11TxDYBDQFpPcbCHntBYS54-56k",
+            desc: "Join our massive weekly beach cleanup drives! We gather every weekend to clear plastic and debris from the shorelines. It's a fun, community-driven event where you can make a tangible difference. We provide all the necessary equipment. Just bring your enthusiasm!",
+            gallery: [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuAgSq-eITFpaOllgmH7IWi7kZM0KZrZefrbl3FLKmkoqBC8N61ap1d8XQH7VLZPFxitA4g7iZO2q8MfNoNjKdAafAiFIzUW-b1zMQZ1K5v6i3xgvMJpuR9gGlP2xGhVDXVYdTkBf9sZdMP_V2Co-742YaWiIEL0PbQgbECEbNf6gpHuODvGk99GUtaqpA5FhHwEeiq2B5OTpSbgzDR3mDBW41HHsx18VojOX2Q_y0buYQNCl7hgtWez4x9urYdTitwJ0AT1RQ-xFCQ",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuD__QuVQUXkMHh5URPJebjXMEvTcb4G_iMTjMvmvrx1OzJsjS54cI93Y8vt9C9c6NFPOv8dsPj99shaXZawb63OMeofzdGdOXr_CXHQ90AGsqgspJFlNz3mQxUT1e2nbxLr6HE1B539Mro8YlQh_l2kJT9VgJrde3YNKO2JrB0DAgV4fTch91spXXk0Um074tCWcybDQNjp5AxzdK7gWDWS4sBd-CZSddT1iQDwuWk5hQOZV-l1BL_5nj4efe0Hd1qLkur_fBhgy7o"
+            ]
+            },
+            'turtle': {
+                title: "Save a Turtle",
+            tag: "Conservation",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAgSq-eITFpaOllgmH7IWi7kZM0KZrZefrbl3FLKmkoqBC8N61ap1d8XQH7VLZPFxitA4g7iZO2q8MfNoNjKdAafAiFIzUW-b1zMQZ1K5v6i3xgvMJpuR9gGlP2xGhVDXVYdTkBf9sZdMP_V2Co-742YaWiIEL0PbQgbECEbNf6gpHuODvGk99GUtaqpA5FhHwEeiq2B5OTpSbgzDR3mDBW41HHsx18VojOX2Q_y0buYQNCl7hgtWez4x9urYdTitwJ0AT1RQ-xFCQ",
+            desc: "Our turtle conservation program focuses on protecting nesting sites and ensuring hatchlings reach the ocean safely. Volunteers help patrol beaches during nesting season and educate locals about marine life protection.",
+            gallery: [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuCxb68n_7NnOpptwRnBpPPHeOUF6bxGKKq-gGfFjpq7QR9H4wBWSMlhiu4gGg9cDhqbiUGebMI6lDMoIhRxVbSV-iHqeZmaA7Ckc9AFc7eiOfeihL92XmlUs4pdUwhiNWLG-T-r1OmVPDzubNLIAqMR-o0xXCgIGMn-i9shgYVGEffWrizRYzIGqm7p03Q4R3VkQ9EDLndqwr480v9_3KwdjVdcV49YjMaTNwM6mJpLCHApPI8J11TxDYBDQFpPcbCHntBYS54-56k",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuD__QuVQUXkMHh5URPJebjXMEvTcb4G_iMTjMvmvrx1OzJsjS54cI93Y8vt9C9c6NFPOv8dsPj99shaXZawb63OMeofzdGdOXr_CXHQ90AGsqgspJFlNz3mQxUT1e2nbxLr6HE1B539Mro8YlQh_l2kJT9VgJrde3YNKO2JrB0DAgV4fTch91spXXk0Um074tCWcybDQNjp5AxzdK7gWDWS4sBd-CZSddT1iQDwuWk5hQOZV-l1BL_5nj4efe0Hd1qLkur_fBhgy7o"
+            ]
+            },
+            'community': {
+                title: "Community Action",
+            tag: "Campaign",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD__QuVQUXkMHh5URPJebjXMEvTcb4G_iMTjMvmvrx1OzJsjS54cI93Y8vt9C9c6NFPOv8dsPj99shaXZawb63OMeofzdGdOXr_CXHQ90AGsqgspJFlNz3mQxUT1e2nbxLr6HE1B539Mro8YlQh_l2kJT9VgJrde3YNKO2JrB0DAgV4fTch91spXXk0Um074tCWcybDQNjp5AxzdK7gWDWS4sBd-CZSddT1iQDwuWk5hQOZV-l1BL_5nj4efe0Hd1qLkur_fBhgy7o",
+            desc: "We believe in the power of community. Our larger drives involve schools, corporates, and local bodies to create massive impact. Partner with us to organize a drive for your organization.",
+            gallery: [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuCxb68n_7NnOpptwRnBpPPHeOUF6bxGKKq-gGfFjpq7QR9H4wBWSMlhiu4gGg9cDhqbiUGebMI6lDMoIhRxVbSV-iHqeZmaA7Ckc9AFc7eiOfeihL92XmlUs4pdUwhiNWLG-T-r1OmVPDzubNLIAqMR-o0xXCgIGMn-i9shgYVGEffWrizRYzIGqm7p03Q4R3VkQ9EDLndqwr480v9_3KwdjVdcV49YjMaTNwM6mJpLCHApPI8J11TxDYBDQFpPcbCHntBYS54-56k",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuAgSq-eITFpaOllgmH7IWi7kZM0KZrZefrbl3FLKmkoqBC8N61ap1d8XQH7VLZPFxitA4g7iZO2q8MfNoNjKdAafAiFIzUW-b1zMQZ1K5v6i3xgvMJpuR9gGlP2xGhVDXVYdTkBf9sZdMP_V2Co-742YaWiIEL0PbQgbECEbNf6gpHuODvGk99GUtaqpA5FhHwEeiq2B5OTpSbgzDR3mDBW41HHsx18VojOX2Q_y0buYQNCl7hgtWez4x9urYdTitwJ0AT1RQ-xFCQ"
+            ]
+            }
+        };
+
+            function openInitiativeModal(id) {
+            const modal = document.getElementById('initiative-modal');
+            const data = initiatives[id];
+            if (!data) return;
+
+            document.getElementById('modal-img').src = data.image;
+            document.getElementById('modal-tag').textContent = data.tag;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-desc').textContent = data.desc;
+
+            const galleryContainer = document.getElementById('modal-gallery');
+            galleryContainer.innerHTML = '';
+            data.gallery.forEach(src => {
+                const img = document.createElement('img');
+            img.src = src;
+            img.className = "w-full h-32 object-cover rounded-lg hover:opacity-90 transition-opacity cursor-pointer";
+            galleryContainer.appendChild(img);
+            });
+
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            document.getElementById('initiative-modal-content').classList.remove('scale-95');
+        }
+
+            function closeInitiativeModal() {
+            const modal = document.getElementById('initiative-modal');
+            modal.classList.add('opacity-0');
+            document.getElementById('initiative-modal-content').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+            initCountries();
     </script>
 </body>
-
-</html>
