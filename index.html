@@ -147,7 +147,8 @@
                 <!-- Communitree Logo removed from here -->
                 <!-- Dynamic Content Container -->
                 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12">
-                    <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-10 font-bold">
+                    <h1
+                        class="font-display text-3xl sm:text-4xl md:text-7xl lg:text-8xl text-white leading-tight mb-10 font-bold">
                         #ICleanedMyBeach
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4">
@@ -735,7 +736,7 @@
                 mode: "no-cors",
                 headers: { "Content-Type": "text/plain;charset=utf-8" },
                 body: JSON.stringify(payload)
-            }).then(() => { }).catch(error => { console.error("Error submitting:", error); });
+            }).then(() => { }).catch(() => { /* Silent error */ });
         }
 
         // State
@@ -787,7 +788,7 @@
                 videoElement.srcObject = stream;
                 document.getElementById('camera-modal').classList.remove('hidden');
             } catch (err) {
-                alert("Could not access camera.");
+                showToast("Could not access camera.", "error");
             }
         }
 
